@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reset pwd</title>
+
+    <!-- style -->
+    <link rel="stylesheet" href="/static/css/index.min.23a5b1ca.min.css" media="all">
+
+    <!-- scripts -->
+    <script async="" src="/static/js/analytics.js"></script>
+    <script src="/static/js/index.min.f7c13f64.min.js"></script>
+
+</head>
+<body>
+  <div class="panel">
+    <div class="header">
+      <span class="col_fade">重置密码</span>
+    </div>
+    <div class="inner">
+      <form id="change_pass_form" class="form-horizontal" action="{{ url_for("reset.update") }}" method="post">
+        <input name="token" type="hidden" value="{{ token }}">
+        <div class="control-group">
+          <label class="control-label" for="new_pass">新密码</label>
+
+          <div class="controls">
+            <input class="input-xlarge" type="password" id="new_pass" name="password" size="30">
+          </div>
+        </div>
+        <div class="form-actions">
+          <input type="submit" class="span-primary submit_btn" data-loading-text="更改中.." value="更改密码">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

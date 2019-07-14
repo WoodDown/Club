@@ -1,0 +1,15 @@
+server {
+    listen 80;
+
+    location /images {
+        alias /var/www/club/images;
+    }
+
+    location /static {
+        alias /var/www/club/static;
+    }
+
+    location / {
+        proxy_pass http://localhost:2000;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://cnodejs.org/rss">
+
+    -->
+    <link rel="icon" href="https://static2.cnodejs.org/public/images/cnode_icon_32.png" type="image/x-icon">
+
+    <!-- style -->
+    <link rel="stylesheet" href="/static/css/index.min.23a5b1ca.min.css" media="all">
+
+    <!-- scripts -->
+    <script async="" src="/static/js/analytics.js"></script>
+    <script src="/static/js/index.min.f7c13f64.min.js"></script>
+
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<!-- navbar -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{{ url_for("bp_topic.index") }}">
+                <!--
+                <img src="/static/cnodejs_light.svg">
+                -->
+            </a>
+
+            <ul class="nav pull-right">
+                <li><a href="{{ url_for("bp_topic.index") }}">首页</a></li>
+                <li><a href="{{ url_for("mail.index") }}">未读消息</a></li>
+                <li><a href="{{ url_for("bp_user.setting") }}">设置</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="main">
+    <div id="sidebar">
+        <div class="panel">
+            <div class="header">
+                <span class="col_fade">个人信息</span>
+            </div>
+
+            <div class="inner">
+                <div class="user_card">
+                    <div>
+                        <a class="user_avatar" href="{{ url_for("bp_user.detail", id=u.id) }}">
+                            <img src="{{ u.image }}">
+                        </a>
+                        <span class="user_name">
+                            <a class="dark" href="">{{ u.username }}</a>
+                        </span>
+
+                        <br>
+
+                        <span class="signature">
+                            “{{ u.signature }}”
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="inner">
+                <a href="{{ url_for("bp_topic.new") }}?board_id={{ bid }}" id="create_topic_btn">
+                    <span class="span-success">发布话题</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    {% block content %}{% endblock %}
+</div>
+
+{% block other %}{% endblock %}
+
+</body>
+
+</html>
