@@ -39,6 +39,7 @@ def index():
 
     t = render_template(
         'mail/index.html',
+        u=u,
         send=send,
         received=received,
     )
@@ -52,6 +53,6 @@ def view(id):
     u = current_user()
     # if u.id == mail.receiver_id or u.id == mail.sender_id:
     if u.id in [message.receiver_id, message.sender_id]:
-        return render_template('mail/detail.html', message=message)
+        return render_template('mail/detail.html', u=u, message=message)
     else:
         return redirect(url_for('.index'))

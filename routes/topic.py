@@ -34,8 +34,9 @@ def index():
 @main.route('/<int:id>')
 @login_required
 def detail(id):
+    u = current_user()
     m = Topic.get(id)
-    return render_template("topic/detail.html", topic=m)
+    return render_template("topic/detail.html", u=u, topic=m)
 
 
 @main.route("/add", methods=["POST"])
@@ -50,7 +51,10 @@ def add():
 @main.route("/new")
 @login_required
 def new():
-    board_id = int(request.args.get('board_id'))
+    u = current_user()
+
+    # all board_id: 1
+    board_id = request.args.get('board_id', 1)
     bs = Board.all()
-    return render_template("reply/new.html", bs=bs, bid=board_id)
+    return render_template("reply/new.html", u=u, bs=bs, bid=board_id)
 
