@@ -92,7 +92,7 @@
 
             <a class="last_time pull-right"
                href="{{ url_for("bp_topic.index") }}">
-                <img class="user_small_avatar" src="/staitic{{ u.image }}">
+                <img class="user_small_avatar" src="{{ u.image }}">
                 <span class="last_active_time">{{ t.updated_time | format_time }}</span>
             </a>
 
